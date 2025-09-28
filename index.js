@@ -17,7 +17,7 @@ const Alunos = require("./routes/alunos");
 app.use(Alunos);
 
 const Professores = require("./routes/professores");
-app.use("/professores", professoresRouter);
+app.use("/professores", Professores);
 
 app.listen(3000, () => {
     console.log("Rodando em http://localhost:3000");
