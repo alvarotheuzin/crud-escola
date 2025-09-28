@@ -1,13 +1,21 @@
-const express = require('express')
-const cors = require('cors')
+const express = require('express');
+const cors = require('cors');
 
-const app = express()
-app.use(cors())
-app.use(express.json())
-// TODO: Membro 1 - Importar e mapear rota de alunos
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-// TODO: Membro 2 - Importar e mapear rota de professores
+app.use((req, res, next) => {
+    console.log(" ----- LOG DE REQUISIÇÃO ----- ");
+    console.log("Time: ", new Date().toLocaleString());
+    console.log("METODO: ", req.method);
+    console.log("ROTA: ", req.route);
+    next();
+});
+
+const Alunos = require("./routes/alunos");
+app.use(Alunos);
 
 app.listen(3000, () => {
-console.log('Server is running on http://localhost:3000')
-})
+    console.log("Rodando em http://localhost:3000");
+});
